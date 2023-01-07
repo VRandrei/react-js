@@ -1,33 +1,53 @@
 import { useState } from "react";
 
 function Form() {
-    const [fName, setFName] = useState('');
-    const [lName, setLName] = useState('');
-    const [happy, setHappy] = useState(false);
+    // const [fName, setFName] = useState('');
+    // const [lName, setLName] = useState('');
+    // const [happy, setHappy] = useState(false);
 
-    const submitVales = () => {
-        const person = {
-            firstName: fName,
-            lastName: lName,
-            isHappy: happy,
-        }
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        isHappy: false,
+    });
 
-        if (person.isHappy) {
-            alert(`${person.firstName} ${person.lastName} счастлив )`)
+    const submitVales = (e) => {
+        e.preventDefault()
+        if (user.isHappy) {
+            alert(`${user.firstName} ${user.lastName} счастлив )`)
         } else {
-            alert(`${person.firstName} ${person.lastName} НЕ счастлив (`)
+            alert(`${user.firstName} ${user.lastName} НЕ счастлив (`)
         }
+    }
+
+    const handleChangeUser = (value, key) => {
+        setUser({ ...user, [key]: value})
     }
 
   return (
     <form>
-        <input className='input' placeholder='First Name' onChange={(e) => setFName(e.target.value)} />
-        <input className='input' placeholder='Last Name' onChange={(e) => setLName(e.target.value)} />
+        <input
+            value={user.firstName}
+            className='input'
+            placeholder='First Name'
+            onChange={(e) => handleChangeUser(e.target.value, 'firstName')}
+        />
+        <input
+            value={user.lastName}
+            className='input'
+            placeholder='Last Name'
+            onChange={(e) => handleChangeUser(e.target.value, 'lastName')}
+        />
         <div className="check">
-            <input id='happy' type='checkbox' onChange={(e) => setHappy(e.target.checked)} />
+            <input
+                checked={user.isHappy}
+                id='happy'
+                type='checkbox'
+                onChange={(e) => handleChangeUser(e.target.checked, 'isHappy')}
+            />
             <label htmlFor='happy'>Счастлив?</label>
         </div>
-          <button type='button' onClick={submitVales}>Submit</button>
+          <button type="submit" onClick={(e) => submitVales(e)}>Submit</button>
     </form>
   );
 }
