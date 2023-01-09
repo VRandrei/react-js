@@ -1,8 +1,12 @@
 import './App.css';
+import Users from './components/Users';
+
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <section className='users-table'>
+      <Users />
+    </section>
   );
 }
 
