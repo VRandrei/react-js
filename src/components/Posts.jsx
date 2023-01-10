@@ -21,7 +21,7 @@ const Posts = ({index}) => {
 
     return (
         userPosts.map((post) => 
-            <li>{ post.title }</li>
+            <li key={post.id}>{ post.title }</li>
         )
     )
 }
