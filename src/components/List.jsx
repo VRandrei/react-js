@@ -1,7 +1,8 @@
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Posts from './Posts';
 
-const List = ({ users, posts }) => {
+const List = ({ users }) => {
     return (
         <div>
             {users.map((user) => 
@@ -15,7 +16,7 @@ const List = ({ users, posts }) => {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            <Posts index={user.id} />
                     </Typography>
                     </AccordionDetails>
                 </Accordion>

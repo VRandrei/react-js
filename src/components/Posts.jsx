@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import List from "./List";
 
-const Posts = async () => {
+const Posts = ({index}) => {
     
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const getUsers = async () => {
+        const getPosts = async () => {
             try {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
                 setPosts(response.data)
@@ -15,10 +14,16 @@ const Posts = async () => {
                 console.log(error);
             }
         }
-        getUsers();
+        getPosts(); 
     }, []);
 
-    <List posts={posts} />
+    let userPosts = posts.filter((post) => post.userId === index)
+
+    return (
+        userPosts.map((post) => 
+            <li>{ post.title }</li>
+        )
+    )
 }
  
 export default Posts;
