@@ -1,0 +1,14 @@
+.cardList{
+    padding: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text{
+    color: #222;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
