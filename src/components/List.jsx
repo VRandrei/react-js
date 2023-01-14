@@ -16,14 +16,13 @@ const List = ({ users }) => {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                            <Posts index={user.id} />
+                            <Posts posts={user.posts} />
                     </Typography>
                     </AccordionDetails>
                 </Accordion>
             )}
         </div>
     );
-
     
 }
 

@@ -6,16 +6,21 @@ const Users = () => {
     
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        const getUsers = async () => {
-            try {
-                const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-                setUsers(response.data)
-            } catch (error) {
-                console.log(error);
-            }
+    const fetchData = async () => {
+        try {
+            const [responsePosts, responseUser] = await Promise.all([axios.get('https://jsonplaceholder.typicode.com/posts'), axios.get('https://jsonplaceholder.typicode.com/users')])
+
+            responseUser.data.forEach((user) => {
+                user.posts = responsePosts.data.filter((post) => post.userId === user.id)
+            })
+            setUsers(responseUser.data);
+        } catch (error) {
+            console.log(error);
         }
-        getUsers();
+    }
+
+    useEffect(() => {
+        fetchData();
     }, []);
 
     console.log(users)
