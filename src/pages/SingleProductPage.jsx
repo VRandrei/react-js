@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 const SingleProductPage = () => {
     return (  
         <div className='div-not-found'>

@@ -1,28 +1,36 @@
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import DefaultLayout from './layouts/DefaultLayout';
+import AuthProvider from './layouts/AuthProvider';
 
 import HomePage from './pages/HomePage';
 import StorePage from './pages/StorePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage';
+import LoginPage from './pages/LoginPage';
+
+import AuthLayout from './layouts/AuthLayout';
 
 function App() {
   return (
     <>
-      <header>
-        <Link to='/'>Home</Link>
-        <Link to='/store'>Store</Link>
-        <Link to='/about'>About</Link>
-      </header>
-
-      <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/store' element={<StorePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/:id' element={<SingleProductPage/>} />
-          <Route path='/*' element={<NotFoundPage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<DefaultLayout/>}>
+              <Route index element={<HomePage />} />
+              <Route path='store' element={<StorePage />} />
+              <Route path='about' element={
+                <AuthLayout>
+                  <AboutPage/>
+                </AuthLayout>
+              } />
+              <Route path='login' element={<LoginPage />} />
+              <Route path='store/:product/:id' element={<SingleProductPage/>} />
+              <Route path='*' element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </>
   );
 }

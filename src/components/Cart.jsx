@@ -29,7 +29,7 @@ const Cart = ({products}) => {
                     </CardContent>
                     <CardActions className='cart-actions'>
                         <Button size="small">Buy</Button>
-                        <Link to={`/product${product.id}`}>
+                        <Link to={`/store/product/${product.id}`}>
                             <Button size="small" className='more-button'>Learn More</Button>
                         </Link>
                     </CardActions>
