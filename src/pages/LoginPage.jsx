@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import './style.css'
 
@@ -20,7 +21,6 @@ const LoginPage = () => {
         }
 
         signin(user, () => navigate(fromPage, {replace: true}))
-
     }
 
     return (
@@ -33,6 +33,9 @@ const LoginPage = () => {
                 <input type="password" placeholder="password" name="password"/>
                 <button>Login</button>
             </form>
+            <div>
+                <Link to='/' className="return">Return to home</Link>
+            </div>
         </div>
     );
 }

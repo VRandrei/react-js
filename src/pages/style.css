@@ -31,6 +31,22 @@
     text-decoration: underline;
 }
 
+.single-cart{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.return{
+    color: #222;    
+    font-size: 30px;
+    margin-top: 1000px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .cart-item{
     position: relative;
 }

@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import DefaultLayout from './layouts/DefaultLayout';
+import AuthLayoutPage from './layouts/AuthLayoutPage';
 import AuthProvider from './layouts/AuthProvider';
 
 import HomePage from './pages/HomePage';
@@ -25,9 +26,11 @@ function App() {
                   <AboutPage/>
                 </AuthLayout>
               } />
-              <Route path='login' element={<LoginPage />} />
               <Route path='store/:product/:id' element={<SingleProductPage/>} />
               <Route path='*' element={<NotFoundPage />} />
+          </Route>
+          <Route path='/' element={<AuthLayoutPage />}>
+              <Route path='login' element={<LoginPage/>} />
           </Route>
         </Routes>
       </AuthProvider>
